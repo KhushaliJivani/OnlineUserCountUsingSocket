@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Counter</title>
+  </head>
+  <body onload="onlineDisplayUser()">
+    <label id="User"></label>
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+var socket = io();
+function onlineDisplayUser(){
+    socket.emit('displayUser')
+}
+
+socket.on('onlineUser', function(data) {
+    document.getElementById('User').innerHTML="total Online User: "+data;
+
+  });
+socket.on('disconnectedUser', function(data) {
+    document.getElementById('User').innerHTML="total Online User: "+data;
+
+  });
+
+</script>
+</body>
+</html>
+
+
